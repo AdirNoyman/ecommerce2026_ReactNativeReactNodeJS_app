@@ -1,9 +1,10 @@
 import express from 'express';
+import type { Request, Response } from 'express';
 
 const app = express();
 
 // Check server is running
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Server is up and running! 🚀');
 });
 
