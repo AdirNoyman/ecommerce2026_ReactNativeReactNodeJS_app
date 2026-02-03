@@ -1,0 +1,14 @@
+{
+  "name": "mobile-shop2026",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "pnpm install --prefix backend && pnpm install --prefix admin && pnpm --prefix admin build && echo 'All dependencies installed!'",
+    "start": "pnpm --prefix backend start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.2"
+}
