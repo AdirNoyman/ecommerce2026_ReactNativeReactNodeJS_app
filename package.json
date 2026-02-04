@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "build": "pnpm install --prefix backend && pnpm install --prefix admin && pnpm --prefix admin build && echo 'All dependencies installed!'",
     "start": "pnpm --prefix backend start"

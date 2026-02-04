@@ -14,14 +14,22 @@ app.get('/api/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'OK', message: 'Server is healthy! ✅' });
 });
 
+// Environment-based routing: different behavior for production vs development
 if (ENV.NODE_ENV === 'production') {
-  // Serve our React application as static files
+  // PRODUCTION MODE: Serve the built React admin panel
+  // Serve static assets (JS, CSS, images) from the admin build directory
   app.use(express.static(path.join(__dirname, '../admin/dist')));
 
+  // Catch-all route handler for client-side routing
+  // This ensures that any route (e.g., /products, /users) returns index.html
+  // allowing React Router to handle navigation on the client side
   app.get("/{*any}", (req: Request, res: Response) => {
     res.sendFile(path.join(__dirname, '../admin/dist', 'index.html'));
   });
 } else {
+  // DEVELOPMENT MODE: Simple status message
+  // In dev, the React admin panel typically runs on its own dev server (e.g., Vite on port 5173)
+  // so this backend just confirms it's running
   app.get('/', (req: Request, res: Response) => {
     res.send('Server is running in development mode! 🚀');
   });
